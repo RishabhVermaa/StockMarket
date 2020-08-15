@@ -1,0 +1,62 @@
+version: '3'
+services:
+
+  eureka:
+    image: stockProject/microservice_logindata
+    container_name: eureka
+    ports:
+    - 8761:8761
+    restart: always
+
+  zuul:
+    image: stockProject/zuul-service
+    restart: always
+    container_name: zuul
+    ports:
+    - 8888:8888
+    depends_on:
+      - eureka
+               
+  mysql-docker:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: StockMarketCharting
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    container_name: mysql-docker
+    ports:
+      - "3306:3306"
+      
+  company:
+    image: stockProject/microservice_companydata
+    restart: always
+    container_name: company
+    ports:
+    - 8011:8011
+    depends_on:
+      - eureka
+      - mysql-docker
+      
+
+  stock-exchange:
+    image: stockProject/microservice__stockmarket
+    restart: always
+    container_name: stock-exchange
+    ports:
+    - 8044:8044
+    depends_on:
+      - eureka
+      - mysql-docker
+ 
+  upload:
+    image: stockProject/microservice_spreadsheet
+    restart: always
+    container_name: upload
+    ports:
+    - 8022:8022
+    depends_on:
+      - eureka
+      - mysql-docker
+                    
