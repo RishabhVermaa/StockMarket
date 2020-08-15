@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'profile', component: UpdateProfileComponent }
 
 ];
-
+// n
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

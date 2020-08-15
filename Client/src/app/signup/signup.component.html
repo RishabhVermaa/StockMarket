@@ -1,0 +1,31 @@
+<div class="sign-content">
+  <h3 class="title-color">SIGN UP</h3>
+  <hr />
+  <form [formGroup]="signupForm">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label htmlFor="username">Username</label>
+          <input class="form-control" formControlName="username" type="text" placeholder="Username" name="username" id="username" />
+        </div>
+        <div class="form-group">
+          <label htmlFor="password">Password</label>
+          <input class="form-control" formControlName="password" type="password" placeholder="Password" name="password" id="password" />
+        </div>
+        <div class="form-group">
+          <label htmlFor="email">Email</label>
+          <input class="form-control" formControlName="email" type="text" placeholder="Email" name="email" id="email" />
+        </div>
+        <div class="form-group">
+          <label htmlFor="email">Mobile</label>
+          <input class="form-control" formControlName="mobile" type="text" placeholder="Mobile" name="mobile" id="mobile" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-success btn-block" (click)="signUp()">Signup</button>
+      </div>
+    </div>
+  </form>
+</div>
